@@ -42,7 +42,7 @@ function generateDistrictData() {
             districtName: district.name,
             ...generateRandomData()
         }
-        weatherData.push(obj)
+        weatherData.push(obj);
     }
   console.log(weatherData);
 
