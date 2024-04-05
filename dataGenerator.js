@@ -1,5 +1,5 @@
 function generateRandomData() {
-    
+    const currentDate = new Date()
     const temperature = Math.random() * (40 - 10) + 10; 
     const humidity = Math.random() * (100 - 0) + 0; 
     const airPressure = Math.random() * (1100 - 900) + 900; 
@@ -8,10 +8,10 @@ function generateRandomData() {
     return {
       temperature: temperature.toFixed(2), 
       humidity: humidity.toFixed(2), 
-      airPressure: airPressure.toFixed(2) 
+      airPressure: airPressure.toFixed(2), 
+      dateTime: currentDate
     };
   }
   
- 
   module.exports = generateRandomData;
   

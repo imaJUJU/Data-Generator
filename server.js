@@ -1,12 +1,11 @@
-// server.js
-
 const express = require('express');
 const generateRandomData = require('./dataGenerator');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
+const axios = require('axios');
 
-// Function to generate random data every 5 minutes
+
 function generateDistrictData() {
     let districts = [
         {id: 1, name: 'Colombo'},
@@ -27,13 +26,13 @@ function generateDistrictData() {
         {id: 16, name: 'Trincomalee'},
         {id: 17, name: 'Kurunegala'},
         {id: 18, name: 'Puttalam'},
-        {id: 19, name: 'Gampaha'},
-        {id: 20, name: 'Gampaha'},
-        {id: 21, name: 'Gampaha'},
-        {id: 22, name: 'Gampaha'},
-        {id: 23, name: 'Gampaha'},
-        {id: 24, name: 'Gampaha'},
-        {id: 25, name: 'Gampaha'},
+        {id: 19, name: 'Kegalle'},
+        {id: 20, name: 'Kilinochchi'},
+        {id: 21, name: 'Monaragala'},
+        {id: 22, name: 'Anuradhapura'},
+        {id: 23, name: 'Polonnaruwa'},
+        {id: 24, name: 'Badulla'},
+        {id: 25, name: 'Ratnapura'},
     ]
     let weatherData = new Array()
 
@@ -46,22 +45,27 @@ function generateDistrictData() {
         weatherData.push(obj)
     }
   console.log(weatherData);
- 
+
+  axios.post('http://localhost:3030/saveData', weatherData)
+.then(response => {
+    console.log('Response:', response.data);
+})
+.catch(error => {
+    console.error('Error:', error);
+});
 }
 
 
-// Set up interval to generate and send data every 5 minutes
 const interval = setInterval(
-    generateDistrictData, 1 * 60 * 1000); // 5 minutes in milliseconds
+    generateDistrictData, 1 * 60 * 1000); 
 
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-// Handle process termination (optional)
+
 process.on('SIGINT', () => {
-  clearInterval(interval); // Stop the interval timer
-  process.exit(); // Exit the process
+  clearInterval(interval);
+  process.exit();
 });
