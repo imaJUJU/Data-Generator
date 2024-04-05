@@ -2,7 +2,7 @@ const express = require('express');
 const generateRandomData = require('./dataGenerator');
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = 4000;
 const axios = require('axios');
 
 
