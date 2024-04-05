@@ -46,7 +46,7 @@ function generateDistrictData() {
     }
   console.log(weatherData);
 
-  axios.post('http://13.228.225.19:3030/saveData', weatherData)
+  axios.post('https://webapi-backend-sy8r.onrender.com/saveData', weatherData)
 .then(response => {
     console.log('Response:', response.data);
 })
