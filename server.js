@@ -46,7 +46,7 @@ function generateDistrictData() {
     }
   console.log(weatherData);
 
-  axios.post('http://127.0.0.1:3030/saveData', weatherData)
+  axios.post('http://13.228.225.19:3030/saveData', weatherData)
 .then(response => {
     console.log('Response:', response.data);
 })
@@ -61,7 +61,7 @@ const interval = setInterval(
 
 
 app.listen(port, () => {
-  console.log(`Server is running on http://127.0.0.1:${port}`);
+  console.log(`Server is running on port:${port}`);
 });
 
 
