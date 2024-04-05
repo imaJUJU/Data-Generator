@@ -57,7 +57,7 @@ function generateDistrictData() {
 
 
 const interval = setInterval(
-    generateDistrictData, 1 * 60 * 1000); 
+    generateDistrictData, 5 * 60 * 1000); 
 
 
 app.listen(port, () => {
